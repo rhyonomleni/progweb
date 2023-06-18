@@ -18,6 +18,8 @@ if (isset($_POST["login"])) {
         if ($password == $row["password"]) {
             //set session
             $_SESSION["login"] = true;
+            $_SESSION["username"] = $username;
+            $_SESSION["pass"] = $password;
             header("Location: kalender.php");
             exit;
         }else{
