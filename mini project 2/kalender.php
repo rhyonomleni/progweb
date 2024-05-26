@@ -8,14 +8,15 @@ if (!isset($_SESSION["login"])) {
 // Tes, comment jika kode ndak berhasil dari sini
 $conn = mysqli_connect("localhost", "root", "", "mini_project_2") or die("koneksi gagal");
 
-$sql = "SELECT * FROM kegiatan WHERE username = '$_SESSION[username]' AND password = '$_SESSION[pass]'";
+$sql = "SELECT * FROM kegiatan WHERE username = '$_SESSION[username]' AND password = '$_SESSION[password]'";
 $result = mysqli_query($conn, $sql);
 $events = [];
 $eventDate = [];
 $eventName = [];
 
 $calendarHTML = '<header id="atas">Kalender Kegiatan</header>
-                <a href="logout.php">Logout</a>
+                <a href="logout.php">Logout</a> |
+                <a href="insert.php">Tambahkan kegiatan</a>
                 <h1>Juni 2023</h1>
                 <table border="1" cellspacing="0" cellpadding="50">';
 
@@ -51,6 +52,7 @@ if(mysqli_num_rows($result) > 0){
         $eventName[] = $tmpName;
 
         $event = [
+            'id' => $row['id'], 
             'nama' => $row['nama_kegiatan'],
             'mulai' => $row['tanggal_mulai'],
             'selesai' => $row['tanggal_selesai'],
@@ -73,7 +75,7 @@ for($i=28; $i <= 31; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-05-".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -91,7 +93,7 @@ for($i=01; $i <= 3; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-06-0".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -121,7 +123,7 @@ for($i=4; $i <= 9; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-06-0".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -139,7 +141,7 @@ for($i=10; $i <= 10; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-06-".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -169,7 +171,7 @@ for($i=11; $i <= 17; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-06-".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -199,7 +201,8 @@ for($i=18; $i <= 24; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-06-".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
+            $_SESSION["id"] = $event['id'];
             $notation = true;
             break;
         }
@@ -230,7 +233,7 @@ for($i=25; $i <= 30; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-06-".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -248,7 +251,7 @@ for($i=1; $i <= 1; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-07-0".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -292,7 +295,7 @@ for($i=25; $i <= 30; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-06-".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -310,7 +313,7 @@ for($i=1; $i <= 1; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-07-0".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -340,7 +343,7 @@ for($i=2; $i <= 8; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-07-0".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -370,7 +373,7 @@ for($i=9; $i <= 9; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-07-0".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -388,7 +391,7 @@ for($i=10; $i <= 15; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-07-".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -418,7 +421,7 @@ for($i=16; $i <= 22; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-07-".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -448,7 +451,7 @@ for($i=23; $i <= 29; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-07-".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -478,7 +481,7 @@ for($i=30; $i <= 31; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-07-".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -496,7 +499,7 @@ for($i=1; $i <= 5; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-08-0".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -541,7 +544,7 @@ for($i=30; $i <= 31; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-07-".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -559,7 +562,7 @@ for($i=1; $i <= 5; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-08-0".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -589,7 +592,7 @@ for($i=6; $i <= 9; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-08-0".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -607,7 +610,7 @@ for($i=10; $i <= 12; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-08-".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -637,7 +640,7 @@ for($i=13; $i <= 19; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-08-".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -667,7 +670,7 @@ for($i=20; $i <= 26; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-08-".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -697,7 +700,7 @@ for($i=27; $i <= 31; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-08-".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -715,7 +718,7 @@ for($i=1; $i <= 2; $i++) {
     $notation = true;
     for ($j=0; $j < count($eventDate); $j++) { 
         if("2023-09-0".$i == $eventDate[$j][0]){
-            $calendarHTML .= '<td><a href="">'.$eventName[$j][0].'</a></td>';
+            $calendarHTML .= '<td><a href="deskripsi.php">'.$eventName[$j][0].'</a></td>';
             $notation = true;
             break;
         }
@@ -739,3 +742,16 @@ echo $calendarHTML;
 // Tes, comment jika kode ndak berhasil sampai sini
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>

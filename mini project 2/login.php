@@ -18,8 +18,8 @@ if (isset($_POST["login"])) {
         if ($password == $row["password"]) {
             //set session
             $_SESSION["login"] = true;
-            $_SESSION["username"] = $username;
-            $_SESSION["pass"] = $password;
+            $_SESSION['username'] = $username;
+            $_SESSION['password'] = $password;
             header("Location: kalender.php");
             exit;
         }else{
@@ -40,11 +40,32 @@ if (isset($_POST["login"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+        function cek(){
+            var user=document.getElementById('username')
+            var pass=document.getElementById('password')
+            if ($username == "" || $password == "") {
+                alert("Masukkan username dan password");
+            }else if(mysqli_num_rows($result) == 1){
+                $row = mysqli_fetch_assoc($result);
+                if ($password == $row["password"]) {
+                    //set session
+                    $_SESSION["login"] = true;
+                    $_SESSION['username'] = $username;
+                    $_SESSION['password'] = $password;
+                    header("Location: kalender.php");
+                    exit;
+                }else{
+                    alert("username atau password salah");
+                }
+            }else{
+                alert("username atau password salah");
+            }
+        }
     </script>
 </head>
 <body>
 
-    <form action="" method="post" enctype="multipart/form-data">
+    <form method="POST" action="login.php" enctype="multipart/form-data">
         <label for="username">username : </label>
         <input type="text" name="username" maxlength="30" id="username"> <br>
         <label for="password">password : </label>
