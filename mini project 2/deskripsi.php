@@ -19,7 +19,7 @@ $result = mysqli_query($conn, $sql);
     <title>Document</title>
 </head>
 <body>
-    <a href="kalender.php">Kembali</a>
+    <a href="index.php">Kembali</a>
     <table border="1" cellspacing="0">
         <thead>
             <th>nama_kegiatan</th>

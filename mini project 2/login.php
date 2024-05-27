@@ -20,7 +20,7 @@ if (isset($_POST["login"])) {
             $_SESSION["login"] = true;
             $_SESSION['username'] = $username;
             $_SESSION['password'] = $password;
-            header("Location: kalender.php");
+            header("Location: index.php");
             exit;
         }else{
             ?> <html><p style="color:red">username atau password salah</p></html><?php
@@ -52,7 +52,7 @@ if (isset($_POST["login"])) {
                     $_SESSION["login"] = true;
                     $_SESSION['username'] = $username;
                     $_SESSION['password'] = $password;
-                    header("Location: kalender.php");
+                    header("Location: index.php");
                     exit;
                 }else{
                     alert("username atau password salah");

@@ -63,6 +63,7 @@ if (isset($_POST["kirim"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="insert.css" >
     <script>
         function cek() {
             
@@ -71,28 +72,49 @@ if (isset($_POST["kirim"])) {
     
 </head>
 <body>
-    <a href="kalender.php">Kembali</a>
-    <form action="" method="post" enctype="multipart/form-data">
-    <label for="nama">nama kegiatan : </label>
-    <input type="text" name="nama" max="50" id="nama" required> <br>
-    <label for="mulai">Tanggal Mulai : </label> 
-    <input type="date" name="mulai" id="mulai" required><br>
-    <label for="mulai">Tanggal Selesai : </label>
-    <input type="date" name="selesai" id="selesai" required><br>
-    <label for="durasi">Durasi : </label>
-    <input type="text" name="durasi" id="durasi" required><br>
-    Level : <input type="radio" value="Biasa" name="level" id="biasa" required>
-    <label for="biasa">Biasa</label>
-    <input type="radio" value="Sedang" name="level" id="sedang" required>
-    <label for="sedang">Sedang</label>
-    <input type="radio" value="Sangat Penting" name="level" id="penting" required>
-    <label for="penting">Sangat Penting</label><br>
-    <label for="lokasi">Lokasi : </label>
-    <input type="text" name="lokasi" id="lokasi" required><br>
-    <label for="gambar">gambar : </label>
-    <input type="file" name="gambar"><br>
-    <input type="submit" name="kirim" value="submit">
-    </form>
+<div class="container">
+        <a href="index.php">Kembali</a>
+        <h2>Insert Page</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nama">Nama Kegiatan:</label>
+                <input type="text" name="nama" id="nama" required>
+            </div>
+            <div class="form-group">
+                <label for="mulai">Tanggal Mulai:</label>
+                <input type="date" name="mulai" id="mulai" required>
+            </div>
+            <div class="form-group">
+                <label for="selesai">Tanggal Selesai:</label>
+                <input type="date" name="selesai" id="selesai" required>
+            </div>
+            <div class="form-group">
+                <label for="durasi">Durasi:</label>
+                <input type="text" name="durasi" id="durasi" required>
+            </div>
+            <div class="form-group">
+                <label for="level">Level:</label>
+                <select name="level" id="level" required>
+                    <option value="">--- Pilih Level Kegiatan ---</option>
+                    <option value="biasa">Biasa</option>
+                    <option value="sedang">Sedang</option>
+                    <option value="sangat penting">Sangat Penting</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="lokasi">Lokasi:</label>
+                <input type="text" name="lokasi" id="lokasi" required>
+            </div>
+            <div class="upload-container">
+                <label for="gambar">Gambar:</label>
+                <label for="gambar" class="file-upload">Choose File</label>
+                <input type="file" name="gambar" id="gambar">
+            </div>
+            <div class="form-group">
+                <input type="submit" name="kirim" value="Submit">
+            </div>
+        </form>
+    </div>
 </body>
 </html>
 
