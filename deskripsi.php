@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if (!isset($_SESSION["login"])) {
-    header(("Location: login.php"));
+    header(("Location: https://beta.fti.ukdw.ac.id/saimrey/login.php"));
     exit;
 
 }
@@ -26,7 +26,7 @@ $result = mysqli_query($conn, $sql);
     <title>Document</title>
 </head>
 <body>
-    <a href="index.php">Kembali</a>
+    <a href="https://beta.fti.ukdw.ac.id/saimrey/index.php">Kembali</a>
     <table border="1" cellspacing="0">
         <thead>
             <th>nama_kegiatan</th>
@@ -49,8 +49,8 @@ $result = mysqli_query($conn, $sql);
             <td><?php echo $row["lokasi"]?></td>
             <td><img src="foto/<?php echo $row["gambar"];?>" width="50"></td>
             <td>
-                <a href="update.php?id=<?= $row["id"];?>">Edit</a> | 
-                <a href="delete.php?id=<?= $row["id"];?>" onclick="return confirm('Yakin ingin menghapus?');">Hapus</a>
+                <a href="https://beta.fti.ukdw.ac.id/saimrey/update.php?id=<?= $row["id"];?>">Edit</a> | 
+                <a href="https://beta.fti.ukdw.ac.id/saimrey/delete.php?id=<?= $row["id"];?>" onclick="return confirm('Yakin ingin menghapus?');">Hapus</a>
             </td>
             <?php $_SESSION["tanggal_selesai"]=$row["tanggal_selesai"]?>
         </tr>

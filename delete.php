@@ -1,10 +1,16 @@
 <?php 
 session_start();
 if (!isset($_SESSION["login"])) {
-    header(("Location: login.php"));
+    header(("Location: https://beta.fti.ukdw.ac.id/saimrey/login.php"));
     exit;
 }
-$conn = mysqli_connect("localhost", "root", "", "mini_project_2") or die("koneksi gagal");
+
+$servername = getenv('DB_HOST');
+$usernm = getenv('DB_USERNAME');
+$password = getenv('DB_PASSWORD');
+$db = getenv('DB_NAME');
+
+$conn = mysqli_connect($servername, $usernm, $password, $db) or die("koneksi gagal");
 
 $id = $_GET["id"];
 $username = $_SESSION["username"];
@@ -24,7 +30,7 @@ if ($selesai <= date("Y-m-d")) {
     echo "
         <script>
             alert('kegiatan sudah lewat, data gagal dihapus');
-            document.location.href = 'deskripsi.php';
+            document.location.href = 'https://beta.fti.ukdw.ac.id/saimrey/deskripsi.php';
         </script>    
     ";
 }else{
@@ -35,14 +41,14 @@ if (mysqli_affected_rows($conn) > 0) {
     echo "
         <script>
             alert('data berhasil dihapus');
-            document.location.href = 'deskripsi.php';
+            document.location.href = 'https://beta.fti.ukdw.ac.id/saimrey/deskripsi.php';
         </script>    
     ";
  } else{
     echo "
         <script>
             alert('data gagal dihapus');
-            document.location.href = 'deskripsi.php';
+            document.location.href = 'https://beta.fti.ukdw.ac.id/saimrey/deskripsi.php';
         </script>    
     ";
  }

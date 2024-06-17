@@ -1,11 +1,16 @@
 <?php 
 session_start();
 if (!isset($_SESSION["login"])) {
-    header(("Location: login.php"));
+    header(("Location: https://beta.fti.ukdw.ac.id/saimrey/login.php"));
     exit;
 }
 
-$conn = mysqli_connect("localhost", "root", "", "mini_project_2") or die("koneksi gagal");
+$servername = getenv('DB_HOST');
+$usernm = getenv('DB_USERNAME');
+$password = getenv('DB_PASSWORD');
+$db = getenv('DB_NAME');
+
+$conn = mysqli_connect($servername, $usernm, $password, $db) or die("koneksi gagal");
 
 $id = $_GET["id"];
 $kgtn = mysqli_query($conn, "SELECT * FROM kegiatan WHERE id = $id");
@@ -29,7 +34,7 @@ if(isset($_POST["update"])){
         echo "
             <script>
                 alert('kegiatan sudah lewat, update data gagal');
-                document.location.href = 'deskripsi.php';
+                document.location.href = 'https://beta.fti.ukdw.ac.id/saimrey/deskripsi.php';
             </script>    
         ";
     }elseif ($tgl_mulai < $today || $tgl_selesai < $today) { 
@@ -87,7 +92,7 @@ if(isset($_POST["update"])){
     
 </head>
 <body>
-    <a href="deskripsi.php">Kembali</a>
+    <a href="https://beta.fti.ukdw.ac.id/saimrey/deskripsi.php">Kembali</a>
     <form action="" method="post" enctype="multipart/form-data">
     <label for="nama">nama kegiatan : </label>
     <input type="text" name="nama" max="50" id="nama" value="<?= $isi["nama_kegiatan"]?>"> <br>

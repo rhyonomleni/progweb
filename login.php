@@ -6,11 +6,6 @@ $usernm = getenv('DB_USERNAME');
 $password = getenv('DB_PASSWORD');
 $db = getenv('DB_NAME');
 
-//$servername = '35.170.126.102';
-//$usernm = 'root';
-//$password = 'cloud';
-//$db = 'kalender';
-
 // Tes, comment jika kode ndak berhasil dari sini
 $conn = mysqli_connect($servername, $usernm, $password, $db) or die("koneksi gagal");
 //$conn = new mysqli($servername, $usernm, $password) or die("koneksi gagal");

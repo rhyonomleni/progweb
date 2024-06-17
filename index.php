@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if (!isset($_SESSION["login"])) {
-    header(("Location: login.php"));
+    header(("Location: https://beta.fti.ukdw.ac.id/saimrey/login.php"));
     exit;
 }
 
@@ -9,11 +9,6 @@ $servername = getenv('DB_HOST');
 $usernm = getenv('DB_USERNAME');
 $password = getenv('DB_PASSWORD');
 $db = getenv('DB_NAME');
-
-//$servername = '35.170.126.102';
-//$usernm = 'root';
-//$password = 'cloud';
-//$db = 'kalender';
 
 // Tes, comment jika kode ndak berhasil dari sini
 $conn = mysqli_connect($servername, $usernm, $password, $db) or die("koneksi gagal");
